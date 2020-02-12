@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Mutants from "./components/Mutants";
+import Mutant from "./components/Mutant";
 import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
 import mutants from "./mutants.json";
@@ -12,9 +12,19 @@ class App extends Component {
     topScore: 0
   };
 
-  clickHandler = () => {
-    
-  }
+  // clickMutant = mutant => {
+  //   if (mutant.clicked) {
+  //     this.lose()
+  //   } else {
+  //     // copy of the state
+  //     const mutants = [...this.state.mutants];
+  //     // use findIndex with id to find the index of the mutant clicked
+  //     // set mutants[index].clicked = true
+  //     // setState({mutants})
+  //   }
+  //   console.log("clicked")
+  // }
+
 
   lose = () => {
     this.setState(
@@ -31,7 +41,7 @@ class App extends Component {
       <Wrapper>
         <Title>Mutants</Title>
         {this.state.mutants.map(mutant => (
-          <Mutants
+          <Mutant
             id={mutant.id}
             key={mutant.id}
             image={mutant.image}
