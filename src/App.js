@@ -1,33 +1,40 @@
 import React, { Component } from "react";
-import FriendCard from "./components/FriendCard";
+import Mutants from "./components/Mutants";
 import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
-import friends from "./friends.json";
+import mutants from "./mutants.json";
 
 class App extends Component {
-  // Setting this.state.friends to the friends json array
+  // Setting this.state.mutants to the mutants json array
   state = {
-    friends
+    mutants,
+    score: 0,
+    topScore: 0
   };
 
-  removeFriend = id => {
-    // Filter this.state.friends for friends with an id not equal to the id being removed
-    const friends = this.state.friends.filter(friend => friend.id !== id);
-    // Set this.state.friends equal to the new friends array
-    this.setState({ friends });
-  };
+  clickHandler = () => {
+    
+  }
 
-  // Map over this.state.friends and render a FriendCard component for each friend object
+  lose = () => {
+    this.setState(
+      {
+        score: 0,
+        topScore: this.state.score
+      }
+    )
+  }
+
+  // Map over this.state.mutants and render a Mutants component for each mutant object
   render() {
     return (
       <Wrapper>
-        <Title>Friends List</Title>
-        {this.state.friends.map(friend => (
-          <FriendCard
-            id={friend.id}
-            key={friend.id}
-            name={friend.name}
-            image={friend.image}
+        <Title>Mutants</Title>
+        {this.state.mutants.map(mutant => (
+          <Mutants
+            id={mutant.id}
+            key={mutant.id}
+            image={mutant.image}
           />
         ))}
       </Wrapper>

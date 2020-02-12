@@ -1,0 +1,15 @@
+.img-container {
+  width: 200px;
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+img {
+  width: 60%;
+  height: 80%;
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
