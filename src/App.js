@@ -13,21 +13,26 @@ class App extends Component {
   };
 
   clickMutant = mutant => {
+
     const { id, clicked } = mutant;
+
     if (clicked) {
+
+      let index = mutants.findIndex(mutant => id === mutant.id)
+      console.log("Index: " + mutants.findIndex(mutant => id === mutant.id))
+      
+      // set mutants[index].clicked = true
+      mutants[index].clicked = false
+      console.log("Clicked: " + mutants[index].clicked)
+
       this.setState(
         {
           score: 0,
           topScore: this.state.score,
+          mutants
         }
       )
-      let index = mutants.findIndex(mutant => id === mutant.id)
-      console.log("Index: " + mutants.findIndex(mutant => id === mutant.id))
-      // set mutants[index].clicked = true
-      mutants[index].clicked = false
-      console.log("Clicked: " + mutants[index].clicked)
-      // setState({mutants})
-      this.setState({ mutants })
+
     } else {
       // copy of the state
       const mutants = [...this.state.mutants];
@@ -38,7 +43,13 @@ class App extends Component {
       mutants[index].clicked = true
       console.log("Clicked: " + mutants[index].clicked)
       // setState({mutants})
-      this.setState({ mutants })
+      this.setState(
+        {
+          mutants,
+          score: this.state.score + 1
+        }
+      )
+      console.log("Score: " + this.state.score)
     }
   }
 
