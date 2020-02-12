@@ -22,10 +22,10 @@ class App extends Component {
         }
       )
       let index = mutants.findIndex(mutant => id === mutant.id)
-      console.log(mutants.findIndex(mutant => id === mutant.id))
+      console.log("Index: " + mutants.findIndex(mutant => id === mutant.id))
       // set mutants[index].clicked = true
       mutants[index].clicked = false
-      console.log(mutants[index].clicked)
+      console.log("Clicked: " + mutants[index].clicked)
       // setState({mutants})
       this.setState({ mutants })
     } else {
@@ -33,10 +33,10 @@ class App extends Component {
       const mutants = [...this.state.mutants];
       // use findIndex with id to find the index of the mutant clicked
       let index = mutants.findIndex(mutant => id === mutant.id)
-      console.log(mutants.findIndex(mutant => id === mutant.id))
+      console.log("Index: " + mutants.findIndex(mutant => id === mutant.id))
       // set mutants[index].clicked = true
       mutants[index].clicked = true
-      console.log(mutants[index].clicked)
+      console.log("Clicked: " + mutants[index].clicked)
       // setState({mutants})
       this.setState({ mutants })
     }
