@@ -14,23 +14,25 @@ class App extends Component {
   };
 
   componentDidMount() {
-    //shuffle
+    this.shuffleMutants()
   };
 
   shuffleMutants = () => {
     //shuffle
-    // this.state.mutants.sort((a,b) => Math.random -.5)
+    this.setState({ mutants: this.state.mutants.sort(() => Math.random() - 0.5) });
   }
 
   clickMutant = mutant => {
 
     const { id, clicked } = mutant;
 
+    // If the image has been clicked
     if (clicked) {
-      //loop thru this.state.mutants and for each element change clicked to false
-      //shuffle
 
-      //set score to 0
+      //loop thru this.state.mutants and for each element change clicked to false
+      this.state.mutants.map(mutant => mutant.clicked = false)
+
+      //set score to 0 and keep top score
       this.setState(
         {
           score: 0,
@@ -38,22 +40,15 @@ class App extends Component {
         }
       )
 
+      //shuffle
+      this.shuffleMutants()
 
-
-      // let index = mutants.findIndex(mutant => id === mutant.id)
-      // console.log("Index: " + mutants.findIndex(mutant => id === mutant.id))
-
-      // // set mutants[index].clicked = true
-      // mutants[index].clicked = false
-      // console.log("Clicked: " + mutants[index].clicked)
-
+      // If the image has not been clicked
     } else {
 
       //set mutant.clicked = true
       let index = mutants.findIndex(mutant => id === mutant.id)
-      console.log("Index: " + mutants.findIndex(mutant => id === mutant.id))
       mutants[index].clicked = true
-      console.log("Clicked: " + mutants[index].clicked)
 
       //increment score
       this.setState(
@@ -72,7 +67,7 @@ class App extends Component {
       }
 
       //shuffle
-      this.setState({mutants: this.state.mutants.sort(() => Math.random() - 0.5)});
+      this.shuffleMutants();
     }
   }
 
