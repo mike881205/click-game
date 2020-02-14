@@ -14,7 +14,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    alert("Test your memory! Click an image to score a point. If the same image is clicked the game will reset.")
+    alert("Test your memory! Click an image to score a point. If an image is clicked twice, the game will reset.")
     this.shuffleMutants()
   };
 
