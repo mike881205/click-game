@@ -30,7 +30,7 @@ class App extends Component {
     if (clicked) {
 
       //loop thru this.state.mutants and for each element change clicked to false
-      this.state.mutants.map(mutant => mutant.clicked = false)
+      this.state.mutants.forEach(mutant => mutant.clicked = false)
 
       //set score to 0 and keep top score
       this.setState(
