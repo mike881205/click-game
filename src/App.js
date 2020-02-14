@@ -13,47 +13,66 @@ class App extends Component {
     topScore: 0
   };
 
+  componentDidMount() {
+    //shuffle
+  };
+
+  shuffleMutants = () => {
+    //shuffle
+    // this.state.mutants.sort((a,b) => Math.random -.5)
+  }
+
   clickMutant = mutant => {
 
     const { id, clicked } = mutant;
 
     if (clicked) {
+      //loop thru this.state.mutants and for each element change clicked to false
+      //shuffle
 
-      let index = mutants.findIndex(mutant => id === mutant.id)
-      console.log("Index: " + mutants.findIndex(mutant => id === mutant.id))
-
-      // set mutants[index].clicked = true
-      mutants[index].clicked = false
-      console.log("Clicked: " + mutants[index].clicked)
-
+      //set score to 0
       this.setState(
         {
           score: 0,
           topScore: this.state.score,
-          mutants
         }
       )
+
+
+
+      // let index = mutants.findIndex(mutant => id === mutant.id)
+      // console.log("Index: " + mutants.findIndex(mutant => id === mutant.id))
+
+      // // set mutants[index].clicked = true
+      // mutants[index].clicked = false
+      // console.log("Clicked: " + mutants[index].clicked)
 
     } else {
 
-      // copy of the state
-      const mutants = [...this.state.mutants];
-
-      // use findIndex with id to find the index of the mutant clicked
+      //set mutant.clicked = true
       let index = mutants.findIndex(mutant => id === mutant.id)
       console.log("Index: " + mutants.findIndex(mutant => id === mutant.id))
-
-      // set mutants[index].clicked = true
       mutants[index].clicked = true
       console.log("Clicked: " + mutants[index].clicked)
 
+      //increment score
       this.setState(
         {
-          mutants,
           score: this.state.score + 1
         }
       )
-      console.log("Score: " + this.state.score)
+
+      //change topscore if score is greater than or equal topscore
+      if (this.state.score >= this.state.topScore) {
+        this.setState(
+          {
+            topScore: this.state.topScore + 1
+          }
+        )
+      }
+
+      //shuffle
+      this.setState({mutants: this.state.mutants.sort(() => Math.random() - 0.5)});
     }
   }
 
